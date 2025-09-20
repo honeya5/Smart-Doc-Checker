@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, jsonify, send_file, session
 from flask_cors import CORS
 from docx import Document
@@ -5,7 +6,6 @@ import PyPDF2
 import io
 import re
 import json
-import os
 from datetime import datetime, timedelta
 from difflib import SequenceMatcher
 import threading
@@ -21,16 +21,21 @@ from functools import wraps
 import stripe
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-change-in-production'
+
+# Use environment variables for production security
+app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-change-in-production')
 CORS(app, supports_credentials=True)
 
-# Stripe configuration (replace with your actual keys)
-stripe.api_key = "sk_test_your_stripe_secret_key_here"
-STRIPE_PUBLISHABLE_KEY = "pk_test_your_stripe_publishable_key_here"
+# Stripe configuration using environment variables
+stripe.api_key = os.environ.get('STRIPE_API_KEY', 'sk_test_your_stripe_secret_key_here')
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY', 'pk_test_your_stripe_publishable_key_here')
+
+# Database configuration
+DATABASE_PATH = os.environ.get('DATABASE_PATH', 'doc_checker.db')
 
 # Database initialization
 def init_database():
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     # Users table
@@ -154,7 +159,7 @@ def hash_password(password):
 
 def create_user_session(user_id):
     session_id = str(uuid.uuid4())
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     # Mark previous sessions as inactive
@@ -167,7 +172,7 @@ def create_user_session(user_id):
     return session_id
 
 def get_current_session(user_id):
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     c.execute('''SELECT session_id, documents_processed, reports_generated, total_billing, 
                         session_start FROM user_sessions 
@@ -201,7 +206,7 @@ def update_user_billing(user_id, documents_count, generate_report_flag=False):
     report_cost = PRICING['per_report'] if generate_report_flag else 0
     total_cost = doc_cost + report_cost
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     # Get current session
@@ -253,12 +258,21 @@ def update_user_billing(user_id, documents_count, generate_report_flag=False):
     }
 
 def get_account_balance(user_id):
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     c.execute('SELECT account_balance FROM users WHERE id = ?', (user_id,))
     result = c.fetchone()
     conn.close()
     return result[0] if result else 0.0
+
+# Health check endpoint for deployment
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({'status': 'healthy', 'timestamp': datetime.now().isoformat()})
+
+@app.route('/')
+def home():
+    return jsonify({'message': 'Welcome to the Smart Doc Checker API'})
 
 # Authentication endpoints
 @app.route('/register', methods=['POST'])
@@ -274,7 +288,7 @@ def register():
     if len(password) < 6:
         return jsonify({'error': 'Password must be at least 6 characters long'}), 400
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     try:
@@ -314,7 +328,7 @@ def login():
     if not all([username, password]):
         return jsonify({'error': 'Username and password are required'}), 400
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     password_hash = hash_password(password)
@@ -347,7 +361,7 @@ def login():
 def get_profile():
     user_id = request.current_user_id
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     c.execute('SELECT username, email, account_balance, subscription_type, created_at FROM users WHERE id = ?',
@@ -430,7 +444,7 @@ def confirm_payment():
         if intent.status == 'succeeded' and intent.metadata.get('user_id') == str(user_id):
             amount = intent.amount / 100  # Convert cents to dollars
             
-            conn = sqlite3.connect('doc_checker.db')
+            conn = sqlite3.connect(DATABASE_PATH)
             c = conn.cursor()
             
             # Update account balance
@@ -464,7 +478,7 @@ def confirm_payment():
 def get_transaction_history():
     user_id = request.current_user_id
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     c.execute('''SELECT transaction_type, amount, description, timestamp, 
@@ -507,7 +521,7 @@ def add_external_monitoring():
     if not url:
         return jsonify({'error': 'URL is required'}), 400
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     # Check if already monitoring this URL for this user
@@ -528,7 +542,7 @@ def add_external_monitoring():
 def get_monitored_docs():
     user_id = request.current_user_id
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     
     c.execute('SELECT url, added_at, last_check FROM monitored_documents WHERE user_id = ? AND is_active = TRUE',
@@ -752,7 +766,7 @@ def upload_files():
     billing_info = update_user_billing(user_id, len(valid_docs))
     
     # Deduct from account balance
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     c.execute('UPDATE users SET account_balance = account_balance - ? WHERE id = ?',
               (billing_info['documents_cost'], user_id))
@@ -813,7 +827,7 @@ def generate_detailed_report():
     # Update billing and deduct from account balance
     billing_info = update_user_billing(user_id, 0, generate_report_flag=True)
     
-    conn = sqlite3.connect('doc_checker.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     c = conn.cursor()
     c.execute('UPDATE users SET account_balance = account_balance - ? WHERE id = ?',
               (PRICING['per_report'], user_id))
@@ -902,5 +916,14 @@ def _suggest_timeline(priority):
     }
     return timeline_map.get(priority, 'No specific timeline')
 
+# Production configuration
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    # Use environment variables for port and host
+    port = int(os.environ.get('PORT', 5000))
+    debug_mode = os.environ.get('FLASK_ENV') != 'production'
+    
+    app.run(
+        host='0.0.0.0',  # Required for Render.com
+        port=port,
+        debug=debug_mode
+    )
