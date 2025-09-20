@@ -3,6 +3,10 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// Import the BASE_URL from api_services or define it consistently
+//const String BASE_URL = "http://127.0.0.1:5000"; // For local development
+ const String BASE_URL = "https://smart-doc-checker-p6tt.onrender.com"; // For production
+
 class AuthPage extends StatefulWidget {
   final Function(String token, Map<String, dynamic> user) onAuthSuccess;
 
@@ -65,7 +69,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
 
     try {
       final response = await http.post(
-        Uri.parse('http://127.0.0.1:5000/login'),
+        Uri.parse('$BASE_URL/login'), // Use consistent BASE_URL
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'username': _loginUsernameController.text,
@@ -134,7 +138,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
 
     try {
       final response = await http.post(
-        Uri.parse('http://127.0.0.1:5000/register'),
+        Uri.parse('$BASE_URL/register'), // Use consistent BASE_URL
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
           'username': _registerUsernameController.text,
@@ -180,6 +184,7 @@ class _AuthPageState extends State<AuthPage> with SingleTickerProviderStateMixin
     }
   }
 
+  // Rest of your widget code remains the same...
   Widget _buildLoginTab() {
     return SingleChildScrollView(
       padding: EdgeInsets.all(24),
