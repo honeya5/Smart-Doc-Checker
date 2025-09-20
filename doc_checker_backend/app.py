@@ -24,7 +24,7 @@ app = Flask(__name__)
 
 # Use environment variables for production security
 app.secret_key = os.environ.get('SECRET_KEY', 'your-secret-key-change-in-production')
-CORS(app, supports_credentials=True)
+CORS(app, supports_credentials=True, origins=["*"])  # Allow all origins for testing
 
 # Stripe configuration using environment variables
 stripe.api_key = os.environ.get('STRIPE_API_KEY', 'sk_test_your_stripe_secret_key_here')
