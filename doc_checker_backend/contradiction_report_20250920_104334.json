@@ -1,0 +1,323 @@
+{
+  "metadata": {
+    "generated_at": "2025-09-20T10:43:34.794228",
+    "documents_analyzed": 4,
+    "contradictions_found": 15,
+    "analysis_id": "022304a2-b254-42e1-bc23-4115acc1f17b"
+  },
+  "summary": {
+    "contradictions_found": 15,
+    "processing_time": "2025-09-20T10:42:47.203107",
+    "total_files": 4,
+    "valid_files": 4
+  },
+  "contradictions": [
+    {
+      "id": "cb8118f6-2fc5-4cd6-9c78-bb664135e85d",
+      "type": "Percentage Conflict",
+      "severity": "Medium",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Employee_Contract.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "COMPANY HR POLICY DOCUMENT\nEmployee Attendance Policy:\nAll employees must maintain a minimum of 80% attendance throughout the year",
+        "statement_2": "EMPLOYMENT CONTRACT\nTerms and Conditions of Employment:\nAttendance Requirements:\nThe employee shall maintain regular attendance with minimum 75% presence required"
+      },
+      "explanation": "Two documents specify different percentage requirements: 80.0% vs 75.0%. This creates ambiguity about which standard to follow.",
+      "suggested_resolution": "Standardize the percentage requirement. Consider using the higher value (80.0%) for stricter compliance or clarify which document takes precedence."
+    },
+    {
+      "id": "f9e4c911-f0e6-4086-8d16-dc44429527f4",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Employee_Contract.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Leave Application:\nAll leave requests must be submitted at least 5 days in advance",
+        "statement_2": "Termination Notice:\nEither party may terminate this contract by providing 30 days written notice"
+      },
+      "explanation": "Conflicting time requirements found: 5 days vs 30 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "0cece633-f4ab-4474-9e18-2b9cf7003b54",
+      "type": "Time Period Conflict",
+      "severity": "Medium",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Employee_Contract.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Leave Application:\nAll leave requests must be submitted at least 5 days in advance",
+        "statement_2": "Vacation Policy:\nLeave applications should be submitted minimum 3 days before the intended date"
+      },
+      "explanation": "Conflicting time requirements found: 5 days vs 3 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 5 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "331aac4c-cf75-4cf4-9513-a965b65eecfa",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Employee_Contract.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Leave Application:\nAll leave requests must be submitted at least 5 days in advance",
+        "statement_2": "Mandatory Training:\nNew joiners must complete all required training programs within 45 days"
+      },
+      "explanation": "Conflicting time requirements found: 5 days vs 45 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 45 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "49385a3f-641c-4319-b91e-456c76ab7b18",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Employee_Contract.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Training Requirements:\nAll new employees must complete mandatory safety training within 30 days of joining",
+        "statement_2": "Vacation Policy:\nLeave applications should be submitted minimum 3 days before the intended date"
+      },
+      "explanation": "Conflicting time requirements found: 30 days vs 3 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "8c92bbb8-ff0e-46b1-b345-696c17d36b33",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Employee_Contract.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Training Requirements:\nAll new employees must complete mandatory safety training within 30 days of joining",
+        "statement_2": "Mandatory Training:\nNew joiners must complete all required training programs within 45 days"
+      },
+      "explanation": "Conflicting time requirements found: 30 days vs 45 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 45 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "14801620-95b7-4429-a386-5da65aaf80d9",
+      "type": "Percentage Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Project_Guidence.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "COMPANY HR POLICY DOCUMENT\nEmployee Attendance Policy:\nAll employees must maintain a minimum of 80% attendance throughout the year",
+        "statement_2": "PROJECT MANAGEMENT GUIDELINES\nTeam Collaboration Standards:\nAttendance in Meetings:\nTeam members must attend minimum 90% of scheduled meetings"
+      },
+      "explanation": "Two documents specify different percentage requirements: 80.0% vs 90.0%. This creates ambiguity about which standard to follow.",
+      "suggested_resolution": "Standardize the percentage requirement. Consider using the higher value (90.0%) for stricter compliance or clarify which document takes precedence."
+    },
+    {
+      "id": "ee4c1931-7b4e-47a3-a45c-049661edf7e9",
+      "type": "Deadline Time Conflict",
+      "severity": "Medium",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Project_Guidence.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Employees must be present during core hours from 10:00 AM to 4:00 PM",
+        "statement_2": "Project Deliverables:\nAll project submissions must be completed by 11:59 PM on the due date"
+      },
+      "explanation": "Different submission deadlines specified in documents. This could result in missed deadlines or confusion.",
+      "suggested_resolution": "Standardize all deadline times across documents. Consider using the earlier deadline to ensure all submissions are received on time."
+    },
+    {
+      "id": "1dce13b8-1818-4d7f-926a-d8e94203eee0",
+      "type": "Time Period Conflict",
+      "severity": "Medium",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Project_Guidence.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Leave Application:\nAll leave requests must be submitted at least 5 days in advance",
+        "statement_2": "Documentation:\nAll project documents must be submitted in final format 2 days before deadline"
+      },
+      "explanation": "Conflicting time requirements found: 5 days vs 2 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 5 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "71ff4c94-5ef8-4694-96ce-e86d2830d348",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Project_Guidence.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Leave Application:\nAll leave requests must be submitted at least 5 days in advance",
+        "statement_2": "Training and Development:\nProject-specific training must be completed within 21 days of project assignment"
+      },
+      "explanation": "Conflicting time requirements found: 5 days vs 21 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 21 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "0d23ab6f-0b49-4534-aaa7-f1ce19025673",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Project_Guidence.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Training Requirements:\nAll new employees must complete mandatory safety training within 30 days of joining",
+        "statement_2": "Documentation:\nAll project documents must be submitted in final format 2 days before deadline"
+      },
+      "explanation": "Conflicting time requirements found: 30 days vs 2 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "17926969-79f5-4247-b825-fd4d52363a7d",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Project_Guidence.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Training Requirements:\nAll new employees must complete mandatory safety training within 30 days of joining",
+        "statement_2": "Training and Development:\nProject-specific training must be completed within 21 days of project assignment"
+      },
+      "explanation": "Conflicting time requirements found: 30 days vs 21 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance."
+    },
+    {
+      "id": "8e9a4059-a8c7-4077-8174-a0d4ab1ca9c2",
+      "type": "Percentage Conflict",
+      "severity": "Medium",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Student_Handbook.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "COMPANY HR POLICY DOCUMENT\nEmployee Attendance Policy:\nAll employees must maintain a minimum of 80% attendance throughout the year",
+        "statement_2": "STUDENT ACADEMIC HANDBOOK\nAcademic Requirements and Policies:\nClass Attendance:\nStudents are required to maintain minimum 85% attendance in all courses"
+      },
+      "explanation": "Two documents specify different percentage requirements: 80.0% vs 85.0%. This creates ambiguity about which standard to follow.",
+      "suggested_resolution": "Standardize the percentage requirement. Consider using the higher value (85.0%) for stricter compliance or clarify which document takes precedence."
+    },
+    {
+      "id": "13f92fce-6317-4bc3-b3c2-9f26cdffc409",
+      "type": "Deadline Time Conflict",
+      "severity": "Medium",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Student_Handbook.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Employees must be present during core hours from 10:00 AM to 4:00 PM",
+        "statement_2": "Assignment Submission:\nAll assignments must be submitted before 10:00 PM on the due date via the online portal"
+      },
+      "explanation": "Different submission deadlines specified in documents. This could result in missed deadlines or confusion.",
+      "suggested_resolution": "Standardize all deadline times across documents. Consider using the earlier deadline to ensure all submissions are received on time."
+    },
+    {
+      "id": "76158552-f938-487b-9018-0c1fa081f997",
+      "type": "Time Period Conflict",
+      "severity": "High",
+      "documents": {
+        "document_1": "Company_HR_policy.docx",
+        "document_2": "Student_Handbook.docx"
+      },
+      "conflicting_statements": {
+        "statement_1": "Leave Application:\nAll leave requests must be submitted at least 5 days in advance",
+        "statement_2": "Orientation Requirements:\nNew students must complete academic orientation within 14 days of enrollment"
+      },
+      "explanation": "Conflicting time requirements found: 5 days vs 14 days. This could lead to confusion about actual deadlines.",
+      "suggested_resolution": "Establish a single, clear time requirement. Recommend using 14 days to ensure adequate time for compliance."
+    }
+  ],
+  "recommendations": {
+    "high_priority": [
+      {
+        "contradiction_id": "f9e4c911-f0e6-4086-8d16-dc44429527f4",
+        "action": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 5 days vs 30 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "331aac4c-cf75-4cf4-9513-a965b65eecfa",
+        "action": "Establish a single, clear time requirement. Recommend using 45 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 5 days vs 45 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "49385a3f-641c-4319-b91e-456c76ab7b18",
+        "action": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 30 days vs 3 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "8c92bbb8-ff0e-46b1-b345-696c17d36b33",
+        "action": "Establish a single, clear time requirement. Recommend using 45 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 30 days vs 45 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "14801620-95b7-4429-a386-5da65aaf80d9",
+        "action": "Standardize the percentage requirement. Consider using the higher value (90.0%) for stricter compliance or clarify which document takes precedence.",
+        "impact": "Two documents specify different percentage requirements: 80.0% vs 90.0%. This creates ambiguity about which standard to follow."
+      },
+      {
+        "contradiction_id": "71ff4c94-5ef8-4694-96ce-e86d2830d348",
+        "action": "Establish a single, clear time requirement. Recommend using 21 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 5 days vs 21 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "0d23ab6f-0b49-4534-aaa7-f1ce19025673",
+        "action": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 30 days vs 2 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "17926969-79f5-4247-b825-fd4d52363a7d",
+        "action": "Establish a single, clear time requirement. Recommend using 30 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 30 days vs 21 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "76158552-f938-487b-9018-0c1fa081f997",
+        "action": "Establish a single, clear time requirement. Recommend using 14 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 5 days vs 14 days. This could lead to confusion about actual deadlines."
+      }
+    ],
+    "medium_priority": [
+      {
+        "contradiction_id": "cb8118f6-2fc5-4cd6-9c78-bb664135e85d",
+        "action": "Standardize the percentage requirement. Consider using the higher value (80.0%) for stricter compliance or clarify which document takes precedence.",
+        "impact": "Two documents specify different percentage requirements: 80.0% vs 75.0%. This creates ambiguity about which standard to follow."
+      },
+      {
+        "contradiction_id": "0cece633-f4ab-4474-9e18-2b9cf7003b54",
+        "action": "Establish a single, clear time requirement. Recommend using 5 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 5 days vs 3 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "ee4c1931-7b4e-47a3-a45c-049661edf7e9",
+        "action": "Standardize all deadline times across documents. Consider using the earlier deadline to ensure all submissions are received on time.",
+        "impact": "Different submission deadlines specified in documents. This could result in missed deadlines or confusion."
+      },
+      {
+        "contradiction_id": "1dce13b8-1818-4d7f-926a-d8e94203eee0",
+        "action": "Establish a single, clear time requirement. Recommend using 5 days to ensure adequate time for compliance.",
+        "impact": "Conflicting time requirements found: 5 days vs 2 days. This could lead to confusion about actual deadlines."
+      },
+      {
+        "contradiction_id": "8e9a4059-a8c7-4077-8174-a0d4ab1ca9c2",
+        "action": "Standardize the percentage requirement. Consider using the higher value (85.0%) for stricter compliance or clarify which document takes precedence.",
+        "impact": "Two documents specify different percentage requirements: 80.0% vs 85.0%. This creates ambiguity about which standard to follow."
+      },
+      {
+        "contradiction_id": "13f92fce-6317-4bc3-b3c2-9f26cdffc409",
+        "action": "Standardize all deadline times across documents. Consider using the earlier deadline to ensure all submissions are received on time.",
+        "impact": "Different submission deadlines specified in documents. This could result in missed deadlines or confusion."
+      }
+    ],
+    "low_priority": []
+  }
+}
