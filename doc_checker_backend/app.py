@@ -270,9 +270,6 @@ def get_account_balance(user_id):
 def health_check():
     return jsonify({'status': 'healthy', 'timestamp': datetime.now().isoformat()})
 
-@app.route('/')
-def home():
-    return jsonify({'message': 'Welcome to the Smart Doc Checker API'})
 
 # Authentication endpoints
 @app.route('/register', methods=['POST'])
