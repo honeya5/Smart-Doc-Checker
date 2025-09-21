@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: smart-doc-checker-frontend
+    env: docker
+    dockerfilePath: ./doc_checker_forntend/Dockerfile
+    dockerContext: ./doc_checker_forntend
+    plan: free
+    region: oregon
+    port: 80
+    healthCheckPath: /
+    autoDeploy: true
