@@ -9,3 +9,6 @@ services:
     port: 80
     healthCheckPath: /
     autoDeploy: true
+    buildFilter:
+      paths:
+        - doc_checker_forntend/**
